@@ -1,0 +1,3185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renaissance Adventure™ - 당신의 르네상스를 시작하세요</title>
+    <style>
+        :root {
+            --primary-navy: #1e3a5f;
+            --secondary-navy: #2c5282;
+            --gold: #D4AF37;
+            --dark-gold: #B8941E;
+            --light-bg: #f8f9fa;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(30, 58, 95, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--gold), #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        nav a:hover {
+            color: var(--gold);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Section Common */
+        section {
+            padding: 5rem 0;
+        }
+        
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-navy);
+            text-align: center;
+        }
+        
+        section .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('./images/constantinople_fall.jpg') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        #hero .content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInUp 1s;
+        }
+        
+        #hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInUp 1s 0.3s backwards;
+        }
+        
+        #hero .hero-visual {
+            max-width: 800px;
+            margin: 3rem auto;
+            animation: fadeInUp 1s 0.6s backwards;
+        }
+        
+        #hero .hero-visual img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            text-align: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: var(--gold);
+            color: #fff;
+        }
+        
+        /* Agitation Section */
+        #agitation {
+            background: var(--light-bg);
+        }
+        
+        .checklist {
+            max-width: 700px;
+            margin: 3rem auto;
+            background: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 1.1rem;
+        }
+        
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        
+        .checklist-item::before {
+            content: '☑️';
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .agitation-message {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--primary-navy);
+            font-weight: 600;
+            margin: 2rem 0;
+        }
+        
+        .agitation-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .agitation-cta p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+        
+        /* Story Section */
+        #story {
+            background: var(--primary-navy);
+            color: #fff;
+        }
+        
+        #story h2 {
+            color: #fff;
+            font-size: 3rem;
+            line-height: 1.3;
+        }
+        
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .story-section {
+            margin: 4rem 0;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid var(--gold);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .story-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .story-section h3 {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .walls-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .walls-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        .walls-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+        
+        .highlight {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .story-image {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .story-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Solution Section */
+        #solution {
+            background: var(--light-bg);
+        }
+        
+        .solution-intro {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            font-size: 1.3rem;
+            line-height: 1.8;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .solution-card {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .solution-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+        
+        .solution-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        .method-section {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .method-section h3 {
+            color: var(--primary-navy);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .method-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .method-text h4 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .method-text p {
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+        
+        .method-image {
+            text-align: center;
+        }
+        
+        .method-image img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .results-box {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .results-box.primary {
+            border: 3px solid var(--gold);
+            background: linear-gradient(135deg, #fff9e6, #fff);
+        }
+        
+        .results-box h4 {
+            color: var(--primary-navy);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .results-box ul {
+            list-style: none;
+        }
+        
+        .results-box li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .results-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        
+        /* Process Section */
+        #process {
+            background: #fff;
+        }
+        
+        .phase {
+            margin: 5rem 0;
+        }
+        
+        .phase-header {
+            background: linear-gradient(135deg, var(--primary-navy), var(--secondary-navy));
+            color: #fff;
+            padding: 2rem;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+        }
+        
+        .phase-header h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .phase-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .steps {
+            background: var(--light-bg);
+            padding: 3rem;
+            border-radius: 0 0 15px 15px;
+        }
+        
+        .step {
+            background: #fff;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            border-left: 5px solid var(--gold);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .step h4 {
+            color: var(--primary-navy);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step-subtitle {
+            color: var(--gold);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step-content {
+            margin-top: 1.5rem;
+        }
+        
+        .step-content h5 {
+            color: var(--primary-navy);
+            margin: 1.5rem 0 1rem;
+        }
+        
+        .step-content ul {
+            list-style: none;
+            margin-left: 1rem;
+        }
+        
+        .step-content li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .step-content li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        
+        .step-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .step-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .process-summary {
+            background: var(--primary-navy);
+            color: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .process-summary h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+        
+        .process-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .process-summary-item {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .process-summary-item h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+        
+        .process-summary-item ul {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .process-summary-item li {
+            padding: 0.3rem 0;
+        }
+        
+        /* Transformation Section */
+        #transformation {
+            background: var(--light-bg);
+        }
+        
+        .comparison-image {
+            max-width: 1000px;
+            margin: 3rem auto;
+            text-align: center;
+        }
+        
+        .comparison-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .transformation-highlight {
+            background: var(--primary-navy);
+            color: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 4rem 0;
+            text-align: center;
+        }
+        
+        .transformation-highlight h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+        
+        .transformation-highlight p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .transformation-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .transformation-list li {
+            list-style: none;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding-left: 3rem;
+            position: relative;
+        }
+        
+        .transformation-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 1rem;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+        
+        /* Who Is This For Section */
+        #fit {
+            background: #fff;
+        }
+        
+        .fit-categories {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+        
+        .fit-box {
+            background: var(--light-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .fit-box.perfect {
+            border: 3px solid var(--gold);
+        }
+        
+        .fit-box.not-fit {
+            border: 3px solid #e53e3e;
+        }
+        
+        .fit-box h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .fit-box.perfect h3 {
+            color: var(--gold);
+        }
+        
+        .fit-box.not-fit h3 {
+            color: #e53e3e;
+        }
+        
+        .fit-category {
+            margin: 2rem 0;
+        }
+        
+        .fit-category h4 {
+            color: var(--primary-navy);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .fit-category ul {
+            list-style: none;
+        }
+        
+        .fit-category li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .fit-box.perfect .fit-category li::before {
+            content: '□';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+        
+        .fit-box.not-fit .fit-category li::before {
+            content: '▫️';
+            position: absolute;
+            left: 0;
+            color: #e53e3e;
+        }
+        
+        .diagnosis {
+            background: var(--primary-navy);
+            color: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 4rem 0;
+        }
+        
+        .diagnosis h3 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+        
+        .diagnosis-questions {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .diagnosis-question {
+            padding: 1.5rem;
+            margin: 1rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .diagnosis-result {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        
+        .diagnosis-result p {
+            font-size: 1.1rem;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        /* Offer Section */
+        #offer {
+            background: var(--light-bg);
+            padding: 6rem 0;
+        }
+        
+        .program-comparison {
+            max-width: 1000px;
+            margin: 3rem auto;
+            text-align: center;
+        }
+        
+        .program-comparison img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .packages {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .package {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .package:hover {
+            transform: translateY(-10px);
+        }
+        
+        .package-main {
+            border: 3px solid var(--gold);
+            transform: scale(1.05);
+        }
+        
+        .package-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+        
+        .package-badge img {
+            width: 150px;
+            height: auto;
+        }
+        
+        .package-header {
+            background: var(--primary-navy);
+            color: #fff;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+        
+        .package-main .package-header {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+        }
+        
+        .package-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .package-header .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .package-body {
+            padding: 2rem;
+        }
+        
+        .package-price {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 2px solid var(--light-bg);
+        }
+        
+        .package-price .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-navy);
+        }
+        
+        .package-price .period {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .package-price .original {
+            text-decoration: line-through;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .package-details {
+            margin: 2rem 0;
+        }
+        
+        .package-detail {
+            margin: 1.5rem 0;
+        }
+        
+        .package-detail h4 {
+            color: var(--primary-navy);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .package-detail ul {
+            list-style: none;
+        }
+        
+        .package-detail li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-dark);
+        }
+        
+        .package-detail li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        
+        .package-benefits {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+        }
+        
+        .package-benefits h4 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-package {
+            width: 100%;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .package-note {
+            text-align: center;
+            margin-top: 1rem;
+            color: #e53e3e;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        /* Trust Section */
+        #trust {
+            background: #fff;
+        }
+        
+        .coach-profile {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 4rem auto;
+            align-items: start;
+        }
+        
+        .coach-image {
+            text-align: center;
+        }
+        
+        .coach-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .coach-info h3 {
+            color: var(--primary-navy);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .coach-info .title {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .coach-info h4 {
+            color: var(--primary-navy);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+        
+        .coach-info ul {
+            list-style: none;
+        }
+        
+        .coach-info li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .coach-info li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        
+        .coach-philosophy {
+            background: var(--light-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .coach-philosophy h4 {
+            color: var(--primary-navy);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .coach-philosophy p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-style: italic;
+            color: var(--text-dark);
+        }
+        
+        .trust-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .trust-feature {
+            background: var(--light-bg);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .trust-feature h3 {
+            color: var(--primary-navy);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .trust-feature ul {
+            list-style: none;
+        }
+        
+        .trust-feature li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .trust-feature li:last-child {
+            border-bottom: none;
+        }
+        
+        .testimonials {
+            max-width: 800px;
+            margin: 4rem auto;
+            text-align: center;
+        }
+        
+        .testimonials img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .guarantee {
+            background: var(--primary-navy);
+            color: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 4rem 0;
+            text-align: center;
+        }
+        
+        .guarantee h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+        
+        .guarantee-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .guarantee-item {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .guarantee-item h4 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .guarantee-item ul {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .guarantee-item li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .guarantee-item li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .guarantee-refund {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+        }
+        
+        .guarantee-refund h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+        
+        .guarantee-refund p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .guarantee-refund-image {
+            margin: 2rem auto;
+            max-width: 300px;
+            text-align: center;
+        }
+        
+        .guarantee-refund-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        
+        /* FAQ Section */
+        #faq {
+            background: var(--light-bg);
+        }
+        
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: #fff;
+            padding: 0;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            color: var(--primary-navy);
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 2rem 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: var(--light-bg);
+        }
+        
+        .faq-question::before {
+            content: '❓';
+            margin-right: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .faq-question::after {
+            content: '▼';
+            font-size: 1.2rem;
+            color: var(--gold);
+            transition: transform 0.3s;
+        }
+        
+        .faq-question.active::after {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            padding: 0 2.5rem 2.5rem 5rem;
+            display: none;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        .faq-answer::before {
+            content: '💡 ';
+            color: var(--gold);
+        }
+        
+        .faq-answer ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .faq-answer li {
+            padding: 0.5rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .faq-answer li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+        
+        .faq-cta {
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .faq-cta h3 {
+            font-size: 1.8rem;
+            color: var(--primary-navy);
+            margin-bottom: 2rem;
+        }
+        
+        /* Urgency Section */
+        #urgency {
+            background: var(--primary-navy);
+            color: #fff;
+        }
+        
+        #urgency h2 {
+            color: #fff;
+        }
+        
+        .urgency-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .urgency-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+        
+        .urgency-box h3 {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .urgency-box p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .urgency-box ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .urgency-box li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        .urgency-box li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+        
+        .special-offer {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .special-offer h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .price-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .price-item {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        
+        .price-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price-item .price {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .benefits-list {
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .benefits-list li {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .payment-options {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+        
+        .payment-options h4 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .payment-option {
+            padding: 1rem;
+            margin: 1rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        /* Final CTA Section */
+        #final-cta {
+            background: linear-gradient(135deg, var(--primary-navy) 0%, #1a2332 100%);
+            color: #fff;
+            padding: 6rem 0;
+        }
+        
+        #final-cta h2 {
+            color: #fff;
+            font-size: 3rem;
+        }
+        
+        .two-paths {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 4rem 0;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .path {
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .path-wait {
+            background: rgba(229, 62, 62, 0.2);
+            border: 2px solid #e53e3e;
+        }
+        
+        .path-start {
+            background: rgba(212, 175, 55, 0.2);
+            border: 2px solid var(--gold);
+        }
+        
+        .path h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .path-wait h3 {
+            color: #e53e3e;
+        }
+        
+        .path-start h3 {
+            color: var(--gold);
+        }
+        
+        .path ul {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .path li {
+            padding: 1rem 0;
+            font-size: 1.2rem;
+        }
+        
+        .path-wait li::before {
+            content: '→ ';
+            color: #e53e3e;
+        }
+        
+        .path-start li::before {
+            content: '→ ';
+            color: var(--gold);
+        }
+        
+        .final-message {
+            text-align: center;
+            max-width: 800px;
+            margin: 4rem auto;
+        }
+        
+        .final-message h3 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+        
+        .final-message p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin: 1.5rem 0;
+        }
+        
+        .final-results {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .final-results ul {
+            list-style: none;
+        }
+        
+        .final-results li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        .final-results li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        
+        .final-cta-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 4rem auto;
+        }
+        
+        .final-cta-button {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .final-cta-button:hover {
+            transform: translateY(-5px);
+        }
+        
+        .final-cta-button h4 {
+            color: var(--primary-navy);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .final-cta-button p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .final-warnings {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+        }
+        
+        .final-warnings p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin: 0.5rem 0;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a202c;
+            color: #fff;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .footer-brand {
+            margin-bottom: 2rem;
+        }
+        
+        .footer-brand h3 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--gold), #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+        
+        .footer-contact {
+            margin: 2rem 0;
+        }
+        
+        .footer-contact h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-contact a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        
+        .footer-contact a:hover {
+            color: var(--gold);
+        }
+        
+        .footer-social {
+            margin: 2rem 0;
+        }
+        
+        .footer-social h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-social a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+        
+        .footer-social a:hover {
+            color: var(--gold);
+        }
+        
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0.5rem 0;
+        }
+        
+        .footer-quote {
+            margin: 2rem 0;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .scroll-top {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 2rem;
+            background: var(--gold);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s;
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Table Styles */
+        .comparison-table-container,
+        .program-comparison-table-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            overflow-x: auto;
+        }
+        
+        .comparison-table,
+        .program-comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .comparison-table thead th,
+        .program-comparison-table thead th {
+            padding: 2rem 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .comparison-table .before-header {
+            background: #e53e3e;
+            color: #fff;
+        }
+        
+        .comparison-table .after-header {
+            background: var(--gold);
+            color: #fff;
+        }
+        
+        .program-comparison-table thead th {
+            background: var(--primary-navy);
+            color: #fff;
+            border-right: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .program-comparison-table thead th:last-child {
+            border-right: none;
+        }
+        
+        .comparison-table tbody td,
+        .program-comparison-table tbody td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .comparison-table .before-cell {
+            background: #fff5f5;
+            color: var(--text-dark);
+            border-right: 2px solid #e53e3e;
+        }
+        
+        .comparison-table .after-cell {
+            background: #fffef0;
+            color: var(--text-dark);
+        }
+        
+        .program-comparison-table .row-header {
+            background: var(--light-bg);
+            font-weight: 600;
+            color: var(--primary-navy);
+            text-align: center;
+        }
+        
+        .program-comparison-table .highlight-cell {
+            background: #fffef0;
+            font-weight: 600;
+        }
+        
+        .program-comparison-table tbody tr:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+        
+        /* Renaissance Icon Styles */
+        .title-with-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .renaissance-icon {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .renaissance-icon.size-large {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .renaissance-icon.size-medium {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .renaissance-icon.size-small {
+            width: 30px;
+            height: 30px;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            #hero h1 {
+                font-size: 2rem;
+            }
+            
+            #hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            section h2 {
+                font-size: 2rem;
+            }
+            
+            .solution-grid,
+            .packages,
+            .fit-categories,
+            .trust-features,
+            .guarantee-grid,
+            .price-comparison,
+            .two-paths,
+            .final-cta-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .package-main {
+                transform: scale(1);
+            }
+            
+            .method-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-summary-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .transformation-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .coach-profile {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table thead th,
+            .program-comparison-table thead th {
+                font-size: 1.1rem;
+                padding: 1rem;
+            }
+            
+            .comparison-table tbody td,
+            .program-comparison-table tbody td {
+                font-size: 0.95rem;
+                padding: 1rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo"><img src="./images/renaissance_icon.png" alt="" class="renaissance-icon size-small" style="margin-right: 0.5rem; vertical-align: middle;">Renaissance Adventure™</div>
+            <ul>
+                <li><a href="#hero">홈</a></li>
+                <li><a href="#story">스토리</a></li>
+                <li><a href="#solution">프로그램</a></li>
+                <li><a href="#process">프로세스</a></li>
+                <li><a href="#offer">패키지</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#final-cta">신청</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Section 1: HERO -->
+    <section id="hero">
+        <div class="container">
+            <div class="content">
+                <h1>당신을 여기까지 이끈 그 성공 방식이<br>이제는 당신을 막고 있다면?</h1>
+                <p class="subtitle">천 년 제국, 동로마도 3중 성벽에 갇혀 무너졌습니다.<br>당신의 스타트업은 어떻습니까?</p>
+                
+                <div class="hero-visual">
+                    <img src="./images/constantinople_fall.jpg" alt="콘스탄티노플 함락">
+                </div>
+                
+                <a href="https://forms.gle/UjSUBDvHKCeAAYeZ7" class="btn" target="_blank">무료 진단 신청하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: AGITATION -->
+    <section id="agitation">
+        <div class="container">
+            <h2>이런 경험, 있으신가요?</h2>
+            
+            <div class="checklist">
+                <div class="checklist-item">초기 성장 이후 정체기가 길어지고 있다</div>
+                <div class="checklist-item">예전의 방법이 더 이상 먹히지 않는다</div>
+                <div class="checklist-item">새로운 시도를 해도 성과가 나지 않는다</div>
+                <div class="checklist-item">경쟁사는 빠르게 성장하는데 우리만 제자리다</div>
+                <div class="checklist-item">팀도, 제품도 좋은데 뭔가 막혀있는 느낌이다</div>
+            </div>
+            
+            <p class="agitation-message">당신만 그런 게 아닙니다.<br>이것은 '<span class="highlight">성공의 함정</span>' 때문입니다.</p>
+            
+            <div class="agitation-cta">
+                <p>'혹시, 나도 성공의 함정에 빠진 건 아닐까?'</p>
+                <a href="https://forms.gle/UjSUBDvHKCeAAYeZ7" class="btn" target="_blank">무료 상담 및 진단 신청하기</a>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #e53e3e;">(한정 월 5팀만 수용)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: STORY -->
+    <section id="story">
+        <div class="container">
+            <h2>천 년 요새, 콘스탄티노플 패러독스…<br>그리고, 르네상스</h2>
+            
+            <div class="story-content">
+                <div class="story-section">
+                    <h3>천년의 영광</h3>
+                    <p>서기 330년부터 1453년까지.</p>
+                    <p>인류 역사상 가장 오랜 시간, 가장 완벽하게 한 도시를 지켜낸 요새가 있었다.</p>
+                    <p class="highlight">콘스탄티노플의 3중 성벽.</p>
+                    
+                    <ul class="walls-list">
+                        <li><strong>제1성벽</strong> - 해자와 흉벽</li>
+                        <li><strong>제2성벽</strong> - 96개 망루의 내성벽</li>
+                        <li><strong>제3성벽</strong> - 높이 12m, 두께 5m의 최후 방패</li>
+                    </ul>
+                    
+                    <p>아랍, 불가르, 러시아, 십자군... 모두 실패했습니다.</p>
+                    <p>수백 번의 공격. 단 한 번도 함락되지 않았습니다.</p>
+                </div>
+                
+                <div class="story-section">
+                    <h3>1453년의 봄</h3>
+                    <div class="story-image">
+                        <img src="./images/basilica_cannon.jpg" alt="바실리카 대포">
+                    </div>
+                    <p>헝가리 출신의 기술자 오르반이 전에 없던 것을 만들었습니다.</p>
+                    <p class="highlight">바실리카.</p>
+                    <p>길이 8미터, 무게 17톤의 거대한 대포.<br>반톤이 넘는 돌덩이를 1.6km나 날렸습니다.</p>
+                    <p>1453년 4월 6일. 바실리카가 불을 뿜었습니다.</p>
+                    <p>쿵. 천년의 제1성벽에 금이 갔습니다.<br>
+                       쿵. 불멸의 제2성벽이 흔들렸습니다.<br>
+                       쿵. 난공불락의 제3성벽이... 무너지기 시작했습니다.</p>
+                    <p>53일 후, 5월 29일. 콘스탄티노플은 함락되었습니다.</p>
+                    <p class="highlight">천 년의 제국이 끝났습니다.</p>
+                </div>
+                
+                <div class="story-section">
+                    <h3>패러독스</h3>
+                    <p>아이러니했습니다.</p>
+                    <p>3중 성벽이 제국을 천 년 동안 지켰습니다.<br>
+                       그런데 그 3중 성벽이 제국을 멸망시켰습니다.</p>
+                    <p>어떻게?</p>
+                    <p>성벽이 너무 완벽했기 때문입니다.<br>
+                       너무 완벽해서, 밖을 보지 않았습니다.<br>
+                       너무 완벽해서, 변화를 거부했습니다.<br>
+                       너무 완벽해서, 혁신을 잊었습니다.</p>
+                    <p class="highlight">보호자이자 감옥.<br>수호자이자 족쇄.<br>힘이자 약점.</p>
+                </div>
+                
+                <div class="story-section">
+                    <h3>그런데...</h3>
+                    <p>기적이 일어났습니다.</p>
+                    <p>함락 직전, 수많은 학자들이 탈출했습니다.<br>
+                       그들이 들고 나온 것은 금은보화가 아니었습니다.</p>
+                    <p>책이었습니다. 두루마리었습니다. 지식이었습니다.</p>
+                    <p>그들은 베네치아로, 피렌체로, 로마로 흩어졌습니다.<br>
+                       그리고 그곳에서 천년간 잠들어 있던 지혜를 풀어놓았습니다.</p>
+                    <p>갑자기 서유럽이 깨어났습니다.</p>
+                    <div class="story-image" style="margin: 2rem 0;">
+                        <img src="./images/renaissance_simbol.png" alt="르네상스" style="max-width: 400px;">
+                    </div>
+                    <p class="highlight">이것이 르네상스였습니다.</p>
+                    <p>파괴가 창조가 되었습니다.<br>
+                       종말이 시작이 되었습니다.<br>
+                       함락이 부활이 되었습니다.</p>
+                </div>
+                
+                <div class="story-section">
+                    <h3>당신의 선택</h3>
+                    <p>당신에게도 3중 성벽이 있습니다.</p>
+                    <p>초기 성공을 이룬 당신의 방식.<br>
+                       시장에서 통했던 제품.<br>
+                       익숙해진 시장과 고객들.</p>
+                    <p>하지만, 세상은 계속 진화하고 변화합니다.</p>
+                    <div class="story-image" style="margin: 2rem 0;">
+                        <img src="./images/choice.png" alt="선택의 갈림길" style="max-width: 600px;">
+                    </div>
+                    <p>만약 콘스탄티노플이 스스로 변화했다면?<br>
+                       바실리카가 오기 전에 혁신했다면?</p>
+                    <p class="highlight">콘스탄티노플이 르네상스의 중심이 되었을 것입니다.</p>
+                    <p>하지만 그들은 기다렸습니다.<br>
+                       바실리카가 와서 깨뜨릴 때까지.</p>
+                    <p style="font-size: 1.5rem; margin-top: 2rem;">당신은 무엇을 선택하겠습니까?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: SOLUTION -->
+    <section id="solution">
+        <div class="container">
+            <h2><img src="./images/renaissance_icon.png" alt="" class="renaissance-icon size-large" style="margin-right: 1rem;">Renaissance Adventure™ Program</h2>
+            <div class="solution-intro">
+                <p><strong>관점 해킹</strong>과 <strong>EMP+DT</strong>(감정·행동 기반 가설 설계 및 실험)을 통하여<br>
+                   당신을 가두고 있는 견고한 3중 성벽을<br>
+                   <span class="highlight">르네상스의 도약으로 탈바꿈시키는 6단계 완성형 여정</span>입니다.</p>
+                
+                <p style="margin-top: 2rem;">당신이 이미 가진 잠재력을 스타트업의 성공에 필요한 모든 방면에서<br>
+                   더욱더 잘 발휘할 수 있도록 돕습니다.</p>
+                
+                <p style="margin-top: 2rem; font-weight: 600; color: var(--primary-navy);">
+                   결국, 당신의 스타트업이 유니콘 이상으로 성장하도록 돕는 것이<br>
+                   Renaissance Adventure™ Program의 목적입니다.</p>
+            </div>
+            
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <h3>1️⃣ 동반자</h3>
+                    <p>우리는 당신의 각성과 변혁을 돕는 동반자입니다<br>→ 선생님이 아닌 파트너</p>
+                </div>
+                <div class="solution-card">
+                    <h3>2️⃣ 무한한 잠재력</h3>
+                    <p>당신의 잠재력은 무한합니다<br>→ 답은 이미 당신 안에</p>
+                </div>
+                <div class="solution-card">
+                    <h3>3️⃣ 자립시킴</h3>
+                    <p>우리는 당신을 자립시킵니다<br>→ 의존이 아닌 졸업</p>
+                </div>
+            </div>
+            
+            <div class="method-section">
+                <h3>"관점 해킹"이란?</h3>
+                <div class="method-content">
+                    <div class="method-text">
+                        <p>성공의 함정으로 고착된 시선을 깨뜨려<br>
+                           본질을 재발견하고 새로운 관점을 찾게 만드는<br>
+                           혁신적 메소드입니다.</p>
+                        <p style="margin-top: 1.5rem;">단순히 새로운 아이디어를 주는 것이 아닙니다.<br>
+                           당신이 스스로 본질을 발견하고<br>
+                           평생 활용할 수 있는 프레임워크를 내재화시킵니다.</p>
+                    </div>
+                    <div class="method-image">
+                        <img src="./images/renaissance_icon.png" alt="바실리카 아이콘">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="method-section">
+                <h3>"EMP+DT"란?</h3>
+                <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">
+                    (Emotion, Motive, Psychology, customer Data, Test)</p>
+                <div class="method-text">
+                    <p>고객의 감정·동기·심리를 고객 데이터에 적용한 가설을 만들고<br>
+                       빠르게 실험으로 검증해<br>
+                       시장에서 작동하는 전략과 실행을 만드는 방법론입니다.</p>
+                    <p style="margin-top: 1.5rem;">단순한 마케팅 기법이 아닙니다.<br>
+                       고객의 본질을 이해하고<br>
+                       제품·비즈니스·경영 전반에 적용하는<br>
+                       20년 실전과 7년 연구가 만든 독자 메소드입니다.</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 4rem;">
+                <h3 style="text-align: center; color: var(--primary-navy); font-size: 2rem; margin-bottom: 2rem;">
+                    프로그램 결과</h3>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 1rem; font-weight: 600;">
+                    5개월 후, 당신은:</p>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 3rem; color: var(--text-light);">
+                    막힌 문제를 돌파하고 유니콘으로 가는 길이 보입니다</p>
+                
+                <div class="results-grid">
+                    <div class="results-box primary">
+                        <h4>🎯 즉시 얻는 것</h4>
+                        <ul>
+                            <li>막힌 문제의 본질 발견 및 해결</li>
+                            <li>유니콘 성장 로드맵 확보</li>
+                            <li>검증된 유니콘 성장 전략</li>
+                            <li>새로운 시장 기회 발견</li>
+                            <li>실행 가능한 액션 플랜</li>
+                        </ul>
+                    </div>
+                    <div class="results-box">
+                        <h4>🎁 보너스로 얻는 것</h4>
+                        <ul>
+                            <li>관점 해킹 프레임워크</li>
+                            <li>EMP+DT 플레이북</li>
+                            <li>실험 설계 체크리스트</li>
+                            <li>본질을 보는 눈</li>
+                            <li>스스로 성장하는 능력</li>
+                            <li>평생 쓸 성장 시스템</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; font-size: 1.3rem; margin-top: 3rem; font-weight: 600; color: var(--primary-navy);">
+                    5개월 투자로 <span class="highlight">현재 문제 해결 + 유니콘 동력 확보 + 평생 자산</span>까지.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: PROCESS -->
+    <section id="process">
+        <div class="container">
+            <h2>6단계 프로세스로 당신의 르네상스를 완성합니다</h2>
+            <p class="subtitle">르네상스 어드벤처의 체계적인 6단계 프로세스는<br>
+               이렇게 당신을 가두고 있는 3중 성벽을 해킹하고<br>
+               르네상스로의 모험과 도약을 만들어 냅니다.</p>
+            
+            <!-- Phase 1 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <h3>Phase 1: 본질의 발견과 변혁 (1~3단계)</h3>
+                    <p>성공의 함정을 뚫고 새로운 기회를 찾습니다</p>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <h4>🔨 1단계: 자아 각성 | 자아의 성벽 해킹</h4>
+                        <div class="step-subtitle">무엇을 하나요?</div>
+                        <p>자유로운 관점 해킹이 가능하도록 무한한 가능성의 상태로 만드는 과정입니다.<br>
+                           당신의 가치관, 신념, 자기 신뢰를 재점검합니다.<br>
+                           "나는 누구인가?" "왜 이 일을 하는가?"를 재발견합니다.</p>
+                        
+                        <div class="step-content">
+                            <h5>왜 필요한가요?</h5>
+                            <p>성공의 함정은 과거의 신념이 굳어진 것입니다.<br>
+                               CEO가 명확해져야 기업도 명확해집니다.</p>
+                            
+                            <h5>결과물</h5>
+                            <ul>
+                                <li>재정의된 가치관과 비전</li>
+                                <li>명확해진 Why</li>
+                                <li>자기 신뢰 회복</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>🔬 2단계: 본질 혁신 | 제품의 성벽 해킹</h4>
+                        <div class="step-subtitle">무엇을 하나요?</div>
+                        <p>기업과 제품의 본질을 재발견합니다.<br>
+                           "우리는 무엇을 파는가?" "진짜 가치는 무엇인가?"</p>
+                        
+                        <div class="step-content">
+                            <h5>왜 필요한가요?</h5>
+                            <p>제품이 아닌 본질을 팔아야 합니다.<br>
+                               Why → How → What 순서로 재정립합니다.</p>
+                            
+                            <h5>결과물</h5>
+                            <ul>
+                                <li>재정의된 비즈니스 본질</li>
+                                <li>명확해진 제품의 Why와 가치</li>
+                                <li>새로운 How와 What</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>🎯 3단계: 기회 발견 | 시장의 성벽 해킹</h4>
+                        <div class="step-subtitle">무엇을 하나요?</div>
+                        <p>시장과 고객을 심층 연구합니다.<br>
+                           "꿈의 고객은 누구?" "숨겨진 기회는 어디?"</p>
+                        
+                        <div class="step-content">
+                            <h5>왜 필요한가요?</h5>
+                            <p>진짜 Product-Market Fit을 찾습니다.<br>
+                               니치 마켓을 발견하고 포착합니다.</p>
+                            
+                            <h5>결과물</h5>
+                            <ul>
+                                <li>명확한 타겟 고객 (꿈의 고객)</li>
+                                <li>새로운 PMF 기회</li>
+                                <li>니치 마켓 발견</li>
+                                <li>전혀 예상치 못한 새로운 성장 기회 발굴</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase 2 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <h3>Phase 2: 르네상스로의 모험과 도약 (4~6단계)</h3>
+                    <p>발견한 기회를 실행하며 유니콘으로 갑니다</p>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <h4>🗺️ 4단계: 항로 설계 | 유니콘 전략 수립</h4>
+                        <div class="step-subtitle">무엇을 하나요?</div>
+                        <p>1~3단계에서 발견한 본질과 기회를 바탕으로<br>
+                           유니콘으로 가는 전략과 로드맵을 설계합니다.</p>
+                        
+                        <div class="step-content">
+                            <h5>어떻게 하나요?</h5>
+                            <ul>
+                                <li>명확한 목표 설정 (6개월, 1년, 3년)</li>
+                                <li>우선순위 결정</li>
+                                <li>액션 플랜 수립</li>
+                                <li>성과 지표 설정</li>
+                            </ul>
+                            
+                            <h5>결과물</h5>
+                            <ul>
+                                <li>유니콘 성장 로드맵</li>
+                                <li>명확한 액션 플랜</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>⛵ 5단계: 시장 항해 | 실험과 학습</h4>
+                        <div class="step-subtitle">무엇을 하나요?</div>
+                        <p>EMP+DT 방법론으로 시장에서 직접 실험합니다.<br>
+                           가설 → 테스트 → 분석 → 개선을 반복합니다.</p>
+                        
+                        <div class="step-content">
+                            <h5>구체적 프로세스</h5>
+                            
+                            <p><strong>5-1. 가설 설계</strong><br>
+                               → EMP 기반 고객 공감 맵<br>
+                               → 실험 가능한 가설 수립</p>
+                            
+                            <p style="margin-top: 2rem;"><strong>5-2. 시장 실험</strong><br>
+                               → 실제 시장에서 테스트<br>
+                               → 고객 반응 수집</p>
+                            
+                            <p style="margin-top: 2rem;"><strong>5-3. 데이터 분석</strong><br>
+                               → 성과 측정<br>
+                               → 학습 도출</p>
+                            
+                            <p style="margin-top: 2rem;"><strong>5-4. 반복 개선</strong><br>
+                               → 가설 수정/보완<br>
+                               → 재실험<br>
+                               → 검증될 때까지 반복!</p>
+                            
+                            <h5 style="margin-top: 2rem;">결과물</h5>
+                            <ul>
+                                <li>시장 검증된 전략</li>
+                                <li>고객 피드백 기반 개선안</li>
+                                <li>작동하는 성장 방법</li>
+                                <li>실전 경험과 자신감</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <h4>🎓 6단계: 르네상스 완성 | 능력의 내재화</h4>
+                        <div class="step-subtitle">무엇을 하나요?</div>
+                        <p>1~5단계에서 배운 모든 것을 내재화하여<br>
+                           당신이 스스로 할 수 있게 만듭니다.</p>
+                        
+                        <div class="step-content">
+                            <h5>구체적 프로세스</h5>
+                            
+                            <p><strong>6-1. 여정 회고</strong><br>
+                               → 1~5단계 학습 정리<br>
+                               → 성공 패턴 추출<br>
+                               → 핵심 인사이트 도출</p>
+                            
+                            <p style="margin-top: 2rem;"><strong>6-2. 자립 준비</strong><br>
+                               → 스스로 할 수 있는지 검증<br>
+                               → 멘탈 모델 내재화 확인<br>
+                               → 다음 단계 독립 로드맵</p>
+                            
+                            <p style="margin-top: 2rem;"><strong>6-3. 졸업</strong><br>
+                               → 성과 축하<br>
+                               → 평생 자산 확인<br>
+                               → 르네상스 동문 네트워크 초대 (준비 중)</p>
+                            
+                            <h5 style="margin-top: 2rem;">결과물</h5>
+                            <ul>
+                                <li>평생 쓸 관점 해킹 능력</li>
+                                <li>스스로 성장하는 시스템</li>
+                                <li>흔들리지 않는 확신</li>
+                                <li>지속 가능한 성장 역량</li>
+                            </ul>
+                            
+                            <h5 style="margin-top: 2rem;">졸업 후</h5>
+                            <p style="font-weight: 600; color: var(--gold);">당신은 이제 스스로 할 수 있습니다.<br>
+                               당신의 유니콘 여정은 이제 시작입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Process Summary -->
+            <div class="process-summary">
+                <h3><img src="./images/renaissance_icon.png" alt="" class="renaissance-icon size-medium" style="margin-right: 0.7rem;">Renaissance Adventure™ 6단계 완성형 프로그램</h3>
+                <div class="process-summary-grid">
+                    <div class="process-summary-item">
+                        <h4>📅 기간</h4>
+                        <p>5개월</p>
+                    </div>
+                    <div class="process-summary-item">
+                        <h4>💎 결과</h4>
+                        <ul>
+                            <li>• 현 문제 상황 해결: 성장 재가동</li>
+                            <li>• 유니콘 성장 동력 확보</li>
+                            <li>• 평생 쓸 성장 능력</li>
+                        </ul>
+                    </div>
+                    <div class="process-summary-item">
+                        <h4>🎯 목표</h4>
+                        <ul>
+                            <li>• 현재 성장 정체 상황 돌파: 매출 성장, 새로운 기회 발굴 등</li>
+                            <li>• 스스로 유니콘까지 성장할 수 있는 힘</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="margin-top: 2rem; font-size: 1.2rem;">
+                    Phase 1 (1~3단계): 본질 발견 → 기회 포착<br>
+                    Phase 2 (4~6단계): 전략 실행 → 능력 내재화</p>
+                <p style="margin-top: 2rem; font-size: 1.3rem; font-weight: 600;">
+                    6단계 완료 = 졸업 = 자립</p>
+                <p style="margin-top: 1rem; font-size: 1.2rem;">
+                    → 현 문제 상황 해결 및 성장 재가동<br>
+                    → 유니콘 성장 동력 확보<br>
+                    → 스스로 할 수 있는 평생 능력</p>
+                <p style="margin-top: 1.5rem; font-size: 1.1rem; color: rgba(255,255,255,0.9);">
+                    더 이상 코치가 필요 없습니다.<br>
+                    당신이 스스로 유니콘까지 성장할 수 있습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: TRANSFORMATION -->
+    <section id="transformation">
+        <div class="container">
+            <h2>5개월 후, 당신의 세계는 완전히 바뀝니다</h2>
+            
+            <div class="comparison-table-container">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th class="before-header">❌ BEFORE<br><span style="font-size: 0.9rem; font-weight: 400;">성공의 함정</span></th>
+                            <th class="after-header">✅ AFTER<br><span style="font-size: 0.9rem; font-weight: 400;">르네상스 완성</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="before-cell category-header" colspan="2" style="text-align: center; font-weight: 700; font-size: 1.2rem; padding: 1.5rem;">💭 사고방식</td>
+                        </tr>
+                        <tr>
+                            <td class="before-cell">▫️ "과거 방식이 맞아, 시장이 잘못됐어"</td>
+                            <td class="after-cell">✓ "본질이 보인다. 기회가 보인다"</td>
+                        </tr>
+                        <tr>
+                            <td class="before-cell">▫️ "우리 제품은 좋은데 왜 안 팔리지?"</td>
+                            <td class="after-cell">✓ "고객의 진짜 문제를 알게 됐다"</td>
+                        </tr>
+                        <tr>
+                            <td class="before-cell">▫️ "더 열심히 하면 되겠지"</td>
+                            <td class="after-cell">✓ "스스로 관점을 전환할 수 있다"</td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="before-cell category-header" colspan="2" style="text-align: center; font-weight: 700; font-size: 1.2rem; padding: 1.5rem;">📊 비즈니스 상황</td>
+                        </tr>
+                        <tr>
+                            <td class="before-cell">▫️ 매출 정체 또는 하락</td>
+                            <td class="after-cell">✓ 새로운 PMF 발견</td>
+                        </tr>
+                        <tr>
+                            <td class="before-cell">▫️ 방향성 불명확</td>
+                            <td class="after-cell">✓ 명확한 성장 전략 확보</td>
+                        </tr>
+                        <tr>
+                            <td class="before-cell">▫️ 새로운 시도마다 실패</td>
+                            <td class="after-cell">✓ 시장 검증된 방법론</td>
+                        </tr>
+                        <tr>
+                            <td class="before-cell">▫️ 팀 사기 저하</td>
+                            <td class="after-cell">✓ 팀 정렬과 동기 부여</td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="before-cell category-header" colspan="2" style="text-align: center; font-weight: 700; font-size: 1.2rem; padding: 1.5rem;">🎯 문제의 본질 / 해결된 것들</td>
+                        </tr>
+                        <tr>
+                            <td class="before-cell">▫️ 같은 관점에 갇혀있음</td>
+                            <td class="after-cell">✓ 새로운 관점 획득</td>
+                        </tr>
+                        <tr>
+                            <td class="before-cell">▫️ 본질을 잃어버림</td>
+                            <td class="after-cell">✓ 재발견된 본질과 Why</td>
+                        </tr>
+                        <tr>
+                            <td class="before-cell">▫️ 시장과 불일치</td>
+                            <td class="after-cell">✓ 니치 마켓 포착</td>
+                        </tr>
+                        <tr>
+                            <td class="before-cell">▫️ 혼자서 해결 불가</td>
+                            <td class="after-cell">✓ 스스로 성장하는 능력</td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="before-cell category-header" colspan="2" style="text-align: center; font-weight: 700; font-size: 1.2rem; padding: 1.5rem;">😰 / 😊 심리 상태</td>
+                        </tr>
+                        <tr>
+                            <td class="before-cell">▫️ 불안과 조급함</td>
+                            <td class="after-cell">✓ 확신과 자신감</td>
+                        </tr>
+                        <tr>
+                            <td class="before-cell">▫️ 자신감 상실</td>
+                            <td class="after-cell">✓ 흔들리지 않는 중심</td>
+                        </tr>
+                        <tr>
+                            <td class="before-cell">▫️ 고립감</td>
+                            <td class="after-cell">✓ 동료와 네트워크</td>
+                        </tr>
+                        <tr>
+                            <td class="before-cell">▫️ "유니콘은 남의 얘기"</td>
+                            <td class="after-cell">✓ "유니콘은 시간문제"</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="transformation-highlight">
+                <h3>무엇이 달라질까요?</h3>
+                <p style="font-size: 1.5rem; font-weight: 600;">먼저, 비즈니스가 달라집니다:</p>
+                
+                <ul class="transformation-list">
+                    <li>막혔던 문제가 해결됩니다</li>
+                    <li>유니콘 성장 로드맵이 생깁니다</li>
+                    <li>새로운 시장 기회가 보입니다</li>
+                    <li>매출 성장 동력을 확보합니다</li>
+                </ul>
+                
+                <p style="margin-top: 3rem; font-size: 1.5rem; font-weight: 600;">게다가, 당신도 달라집니다:</p>
+                
+                <ul class="transformation-list">
+                    <li>본질을 보는 눈</li>
+                    <li>스스로 해결하는 능력</li>
+                    <li>흔들리지 않는 중심</li>
+                    <li>평생 성장하는 시스템</li>
+                </ul>
+                
+                <p style="margin-top: 3rem; font-size: 1.3rem;">
+                    단순한 스킬이 아닙니다.<br>
+                    <strong>비즈니스의 전환 + 정체성의 변화</strong>입니다.</p>
+                <p style="font-size: 1.4rem; margin-top: 1rem;">
+                    당신의 스타트업은 <span style="color: var(--gold);">유니콘으로 가는 길</span>에 서 있고,<br>
+                    당신은 <span style="color: var(--gold);">르네상스를 사는 리더</span>가 됩니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: WHO IS THIS FOR -->
+    <section id="fit">
+        <div class="container">
+            <h2>Renaissance Adventure는 당신을 위한 것입니까?</h2>
+            
+            <div class="fit-categories">
+                <div class="fit-box perfect">
+                    <h3>✅ 이런 분께 완벽합니다</h3>
+                    
+                    <div class="fit-category">
+                        <h4>🎯 비즈니스 단계</h4>
+                        <ul>
+                            <li>시리즈 A 이후 스타트업 대표/창업자</li>
+                            <li>초기 성장 후 정체기를 겪는 CEO</li>
+                            <li>기존 PMF에서 다음 단계를 찾는 Founder</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="fit-category">
+                        <h4>📊 현재 상황</h4>
+                        <ul>
+                            <li>과거에 통했던 방법이 더 이상 안 먹힘</li>
+                            <li>새로운 시도가 번번이 실패</li>
+                            <li>매출이 정체되거나 하락</li>
+                            <li>방향성이 불명확하고 흔들림</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="fit-category">
+                        <h4>💪 마인드셋</h4>
+                        <ul>
+                            <li>본질적 변화를 원함 (단순 팁 ❌)</li>
+                            <li>스스로 성장하고 싶음 (의존 ❌)</li>
+                            <li>유니콘을 진심으로 꿈꿈</li>
+                            <li>5개월 투자할 준비가 됨</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="fit-category">
+                        <h4>🧠 성향 (한스 게오르크 호이젤 기반)</h4>
+                        <ul>
+                            <li>지배시스템 강함: 목표 달성 집착</li>
+                            <li>자극시스템 강함: 새로운 것에 도전</li>
+                            <li>즉, "모험가" 또는 "성과주의자" 성향</li>
+                        </ul>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 2rem; font-weight: 600; font-size: 1.1rem;">
+                        하나라도 체크하셨다면, 우리는 당신을 도울 수 있습니다.<br>
+                        모두 체크하셨다면, 당신은 르네상스 어드벤처의 완벽한 후보입니다.</p>
+                </div>
+                
+                <div class="fit-box not-fit">
+                    <h3>❌ 이런 분께는 맞지 않습니다</h3>
+                    
+                    <div class="fit-category">
+                        <ul>
+                            <li>단기 팁이나 요령만 원하는 분</li>
+                            <li>스스로 변화할 의지가 없는 분</li>
+                            <li>초기 스타트업 (아직 PMF 이전)</li>
+                            <li>빠른 마법 같은 해결책을 찾는 분</li>
+                            <li>5개월 투자가 부담스러운 분</li>
+                            <li>타인에게 계속 의존하고 싶은 분</li>
+                        </ul>
+                    </div>
+                    
+                    <p style="text-align: center; margin-top: 2rem; font-weight: 600; font-size: 1.1rem; color: #e53e3e;">
+                        우리는 당신의 시간을 낭비시키고 싶지 않습니다.<br>
+                        더 이상 웹사이트를 보시지 않기를 권합니다.</p>
+                </div>
+            </div>
+            
+            <!-- Self Diagnosis -->
+            <div class="diagnosis">
+                <h3>💡 간단 자가 진단 (5문항)</h3>
+                <div class="diagnosis-questions">
+                    <div class="diagnosis-question">1. 과거의 성공 방식이 이제는 통하지 않는다 (예/아니오)</div>
+                    <div class="diagnosis-question">2. 본질적 문제를 해결하고 싶다 (예/아니오)</div>
+                    <div class="diagnosis-question">3. 5개월 동안 집중 투자할 준비가 되었다 (예/아니오)</div>
+                    <div class="diagnosis-question">4. 스스로 성장하는 능력을 갖추고 싶다 (예/아니오)</div>
+                    <div class="diagnosis-question">5. 유니콘을 진심으로 꿈꾼다 (예/아니오)</div>
+                </div>
+                
+                <div class="diagnosis-result">
+                    <p><strong>5개 모두 "예"</strong> → 완벽한 후보, 지금 신청하세요</p>
+                    <p><strong>3-4개 "예"</strong> → 적합, 상담 후 결정</p>
+                    <p><strong>0-2개 "예"</strong> → 아직 시기가 아닐 수 있습니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: OFFER -->
+    <section id="offer">
+        <div class="container">
+            <h2>당신에게 맞는 여정을 선택하세요</h2>
+            
+            <div class="packages">
+                <!-- Package 1: Light -->
+                <div class="package">
+                    <div class="package-header">
+                        <h3>💡 라이트 프로그램</h3>
+                        <p class="subtitle">관점 해킹형 일반 코칭</p>
+                    </div>
+                    <div class="package-body">
+                        <div class="package-price">
+                            <div class="price">120만원<span class="period">/월</span></div>
+                            <p style="margin-top: 0.5rem; color: var(--text-light);">1개월 단위 연장형</p>
+                        </div>
+                        
+                        <div class="package-details">
+                            <div class="package-detail">
+                                <h4>포함 내용</h4>
+                                <ul>
+                                    <li>1:1 코칭 세션 (주 1회, 각 90분)</li>
+                                    <li>현재 문제 진단</li>
+                                    <li>관점 해킹 코칭 진행</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="package-detail">
+                                <h4>결과물</h4>
+                                <ul>
+                                    <li>현재 상황 진단</li>
+                                    <li>관점 전환 인사이트 도출</li>
+                                    <li>다음 단계 제안</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="package-detail">
+                                <h4>대상</h4>
+                                <p>자신의 목적을 이루기 위해<br>관점 해킹 코칭이 필요한 분</p>
+                            </div>
+                        </div>
+                        
+                        <a href="https://forms.gle/hfwZ7hq4Eut6mPRk9" class="btn btn-package" target="_blank">선택하기</a>
+                    </div>
+                </div>
+                
+                <!-- Package 2: Renaissance Adventure (Main) -->
+                <div class="package package-main">
+                    <div class="package-badge">
+                        <img src="./images/most_popular.png" alt="MOST POPULAR">
+                    </div>
+                    <div class="package-header">
+                        <h3><img src="./images/renaissance_icon.png" alt="" class="renaissance-icon size-medium" style="margin-right: 0.7rem;">🏆 Renaissance Adventure™</h3>
+                        <p class="subtitle">유니콘으로 가는 완성형 여정</p>
+                    </div>
+                    <div class="package-body">
+                        <div class="package-price">
+                            <div class="original">정가: 500만원/월</div>
+                            <div class="price">300만원<span class="period">/월</span></div>
+                            <p style="margin-top: 0.5rem; color: #e53e3e; font-weight: 600;">런칭 특가!</p>
+                            <p style="color: var(--text-light);">5개월 (총 1,500만원)</p>
+                        </div>
+                        
+                        <div class="package-details">
+                            <div class="package-detail">
+                                <h4>완전한 6단계 프로세스</h4>
+                                <ul>
+                                    <li>Phase 1: 본질의 발견 (1~3단계)</li>
+                                    <li>Phase 2: 르네상스의 창조 (4~6단계)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="package-detail">
+                                <h4>포함 내용</h4>
+                                <ul>
+                                    <li>1:1 코칭 세션 20회 (주 1회, 각 90분)</li>
+                                    <li>EMP+DT 설명서 제공 (수석 코치 저서 3종)</li>
+                                    <li>르네상스 동문 네트워크 평생 멤버십 (준비 중)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="package-benefits">
+                                <h4>특별 혜택 (런칭 기간 한정)</h4>
+                                <ul>
+                                    <li>월 200만원 할인 (런칭 특가)</li>
+                                    <li>5개월 후 무료 Follow-up (1회)</li>
+                                    <li>동문 네트워크 평생 무료 (준비 중)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="package-detail">
+                                <h4>이런 분께 완벽</h4>
+                                <ul>
+                                    <li>정체기를 확실히 돌파하고 싶은 분</li>
+                                    <li>유니콘을 진심으로 꿈꾸는 분</li>
+                                    <li>5개월 투자할 준비가 된 분</li>
+                                    <li>평생 쓸 능력을 갖추고 싶은 분</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <a href="https://forms.gle/eJybW2Wc1z5L8MDZ8" class="btn btn-package" target="_blank">선택하기</a>
+                        <p class="package-note">⚠️ 매월 최대 10팀만 진행합니다</p>
+                    </div>
+                </div>
+                
+                <!-- Package 3: Corporate -->
+                <div class="package">
+                    <div class="package-header">
+                        <h3>👑 기업 고문 프로그램</h3>
+                        <p class="subtitle">전속 전략 파트너</p>
+                    </div>
+                    <div class="package-body">
+                        <div class="package-price">
+                            <div class="price">협의</div>
+                            <p style="margin-top: 0.5rem; color: var(--text-light);">월 1,000만원부터</p>
+                            <p style="color: var(--text-light);">12개월 이상</p>
+                        </div>
+                        
+                        <div class="package-details">
+                            <div class="package-detail">
+                                <h4>포함 내용</h4>
+                                <ul>
+                                    <li>월 1회 상주 근무</li>
+                                    <li>전략 자문 (12개월)</li>
+                                    <li>마케팅 조직 코칭 및 리딩</li>
+                                    <li>주요 의사결정 시 즉시 자문</li>
+                                    <li>신규 사업/제품 런칭 지원</li>
+                                    <li>조직 성장 단계별 코칭</li>
+                                    <li>무제한 연락 (24시간 이내 응답)</li>
+                                    <li>추가 요청 사항 협의 진행</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="package-detail">
+                                <h4>이런 분께</h4>
+                                <ul>
+                                    <li>전속 전략 파트너가 필요한 CEO</li>
+                                    <li>지속적 성장 지원이 필요한 기업</li>
+                                    <li>복잡한 의사결정을 함께할 파트너 필요</li>
+                                    <li>조직 전체의 관점 전환이 필요</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <a href="https://forms.gle/HuXQWkRQWmGSv6Ze7" class="btn btn-package" target="_blank">선택하기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 9: TRUST -->
+    <section id="trust">
+        <div class="container">
+            <h2><img src="./images/renaissance_icon.png" alt="" class="renaissance-icon size-large" style="margin-right: 1rem;">왜 Renaissance Adventure를 믿을 수 있을까요?</h2>
+            
+            <!-- Coach Profile -->
+            <div class="coach-profile">
+                <div class="coach-image">
+                    <img src="./images/profile.png" alt="수석 코치 신동해">
+                </div>
+                <div class="coach-info">
+                    <h3>🎯 수석 코치: 신동해</h3>
+                    <p class="title">관점 해킹과 EMP+DT 방법론 창시자<br>20년 실전 경험 + 7년 연구</p>
+                    
+                    <h4>경력 하이라이트</h4>
+                    <ul>
+                        <li>現 Perspective Lab CEO & 수석 코치</li>
+                        <li>前 플랫폼/이커머스/컨설팅기업 CMO & CEO</li>
+                        <li>전략·마케팅 20년 경력</li>
+                        <li>관점 해킹 프레임워크 개발</li>
+                        <li>EMP+DT 방법론 창안</li>
+                        <li>6개월 만에 매출 정체기 돌파</li>
+                        <li>2달 만에 브랜드 자산 없이 오가닉 매출 276% 상승</li>
+                        <li>3달 만에 창사 이래 월 최대 매출 기록</li>
+                        <li>5달 만에 창사 이래 최대 재구매 매출 기록</li>
+                        <li>4달 만에 순이익률 250% 증가</li>
+                        <li>2달 만에 ROAS 156% 상승</li>
+                    </ul>
+                    
+                    <div class="coach-philosophy">
+                        <h4>철학</h4>
+                        <p>"See Different<br>
+                           생각하라! 다르게 보라! 그리고, 믿어라!<br>
+                           방법은 언제나 있다!"</p>
+                        <p style="margin-top: 1rem;">"당신의 성공이 저의 성공입니다.<br>
+                           당신 안의 무한한 잠재력을 믿고,<br>
+                           그것을 깨우는 일이 제 사명입니다.<br>
+                           답은 이미 당신 안에 있습니다."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trust Features -->
+            <div class="trust-features">
+                <div class="trust-feature">
+                    <h3><img src="./images/renaissance_icon.png" alt="" class="renaissance-icon size-medium" style="margin-right: 0.7rem;">💎 Renaissance Adventure만의 차별점</h3>
+                    <ul>
+                        <li><strong>1️⃣ 검증된 독자 방법론</strong><br>
+                            • 관점 해킹 프레임워크<br>
+                            • EMP+DT 실전 메소드<br>
+                            • 20년 경험의 결정체</li>
+                        
+                        <li><strong>2️⃣ 완성형 프로그램</strong><br>
+                            • 6단계 체계적 프로세스<br>
+                            • 5개월 후 문제 상황 해결 및 성장 재가동<br>
+                            • 평생 쓸 능력 내재화</li>
+                        
+                        <li><strong>3️⃣ 실행 중심 접근</strong><br>
+                            • 이론이 아닌 실전<br>
+                            • 시장에서 직접 검증<br>
+                            • 반복 실험과 학습</li>
+                        
+                        <li><strong>4️⃣ 1:1 맞춤 코칭</strong><br>
+                            • 대표/창업자 직접 코칭<br>
+                            • 산업/상황별 맞춤 전략<br>
+                            • 무제한 지원</li>
+                        
+                        <li><strong>5️⃣ 평생 자산 생성</strong><br>
+                            • 프로세스 단계별 프레임워크<br>
+                            • 관점 해킹 코칭 리더십<br>
+                            • EMP+DT 방법론 기업 내재화<br>
+                            • 동문 네트워크 평생 멤버십</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Testimonials -->
+            <div class="testimonials">
+                <h3 style="color: var(--primary-navy); font-size: 2rem; margin-bottom: 2rem;">🎉 실제 변화 스토리</h3>
+                <img src="./images/testimonial.png" alt="고객 후기">
+            </div>
+            
+            <!-- Guarantee -->
+            <div class="guarantee">
+                <h3>🛡️ 우리의 약속</h3>
+                <div class="guarantee-grid">
+                    <div class="guarantee-item">
+                        <h4>✅ 100% 결과 보장</h4>
+                        <p style="margin-bottom: 1rem;">1~3단계 완료 시:</p>
+                        <ul>
+                            <li>문제의 원인 규명 및 새로운 기회 발견</li>
+                            <li>명확한 본질 재정의</li>
+                            <li>구체적 성장 전략 확보</li>
+                        </ul>
+                    </div>
+                    <div class="guarantee-item">
+                        <h4>✅ 완전 내재화 보장</h4>
+                        <p style="margin-bottom: 1rem;">6단계 완료 시:</p>
+                        <ul>
+                            <li>스스로 관점 전환 가능</li>
+                            <li>독립적 전략 수립 가능</li>
+                            <li>평생 쓸 프레임워크 보유</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="guarantee-refund">
+                    <h4>만약 만족하지 못하신다면?</h4>
+                    <div class="guarantee-refund-image">
+                        <img src="./images/refund_guarantee.png" alt="100% 환불 보장">
+                    </div>
+                    <p>첫 번째 세션에서 만족하지 못하시면<br>
+                       <strong>전액 환불</strong>해드립니다.<br>
+                       조건 없이. 이유 묻지 않고.</p>
+                    <p style="margin-top: 1rem;">우리는 억지로 붙잡지 않습니다.<br>
+                       진심으로 변화를 원하는 분과만 함께합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 10: FAQ -->
+    <section id="faq">
+        <div class="container">
+            <h2>자주 묻는 질문</h2>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">Q1. 컨설팅과 뭐가 다른가요?</div>
+                    <div class="faq-answer">
+                        <p><strong>일반 컨설팅:</strong> "무엇을", "어떻게" 해야 하는지 일방향성으로 알려줌</p>
+                        <p><strong>Renaissance Adventure:</strong><br>
+                           "어떻게 볼지"를 바꿉니다 (관점 해킹)<br>
+                           답을 주는 게 아니라, 당신 안에 있는 답을 스스로 찾도록 돕습니다.<br>
+                           그리고, 이 방법이 당신의 평생 자산이 되도록 만듭니다.</p>
+                        <p style="margin-top: 1rem;">5개월 후 졸업하면 더 이상 우리가 필요 없습니다.<br>
+                           이것이 진짜 성공입니다.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q2. 정말 5개월에 가능한가요?</div>
+                    <div class="faq-answer">
+                        <p>네, 세션에 적극적으로 임하고 과제를 충실히 수행하신 경우 가능합니다.</p>
+                        <p>6단계 체계적 프로세스로:</p>
+                        <ul>
+                            <li>1~3단계 (2.5개월): 본질 발견, 기회 포착</li>
+                            <li>4~5단계 (2개월): 전략 수립, 시장 검증</li>
+                            <li>6단계 (0.5개월): 능력 내재화, 자립</li>
+                        </ul>
+                        <p style="margin-top: 1rem;">5개월 후 당신은:<br>
+                           ✓ 스스로 관점을 전환할 수 있고<br>
+                           ✓ 스스로 전략을 수립할 수 있고<br>
+                           ✓ 스스로 실험하고 성장할 수 있습니다.</p>
+                        <p style="margin-top: 1rem;">다만, 파트너(고객)분들의 요청에 의해서<br>
+                           특정 단계를 좀 더 오래 진행하기도 합니다.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q3. 우리 업종/상황에도 맞나요?</div>
+                    <div class="faq-answer">
+                        <p>'성공의 함정'에 빠진 스타트업의 CEO 및 Founder라면<br>
+                           업종에 무관하게 다 적용 가능합니다.</p>
+                        <p>답은 이미 당신 안에 있기 때문입니다.</p>
+                        <p style="margin-top: 1rem;"><strong>업종 무관:</strong></p>
+                        <ul>
+                            <li>SaaS</li>
+                            <li>커머스</li>
+                            <li>플랫폼</li>
+                            <li>하드웨어</li>
+                            <li>서비스</li>
+                        </ul>
+                        <p style="margin-top: 1rem;">무료 진단 상담에서 적합성을 정확히 진단해드립니다.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q4. 온라인인가요? 오프라인인가요?</div>
+                    <div class="faq-answer">
+                        <p>기본적으로 <strong>온라인 세션</strong>으로 진행합니다.</p>
+                        <p style="margin-top: 1.5rem;">다만,</p>
+                        <p>파트너(고객)와의 코칭 진행 시에 발생하는 여러가지 상황을 고려하여<br>
+                           코칭의 효과와 성과를 높이기 위하여 필요한 경우에는<br>
+                           <strong>오프라인 세션</strong>을 진행합니다.</p>
+                        <p style="margin-top: 1rem;">오프라인 세션은 파트너(고객)와의 선 협의를 통하여 장소를 정하며<br>
+                           보통 공원 산책, 조용한 사무실, 한강변 산책 등 다양한 장소에서 이루어집니다.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q5. 팀원들도 함께 참여하나요?</div>
+                    <div class="faq-answer">
+                        <p>최대한의 성과와 효율성을 위해서<br>
+                           파트너 한 분에게 집중하여 진행하는 <strong>1:1 코칭</strong>입니다.</p>
+                        <p style="margin-top: 1rem;">스타트업은 특히나, CEO 및 오너의 영향력이 막대합니다.<br>
+                           CEO의 변혁이 스타트업 전체의 변혁으로 옮겨지게 됩니다.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q6. 투자 대비 가치가 있을까요?</div>
+                    <div class="faq-answer">
+                        <p>스타트업의 5개월은 성패가 갈리는 기간이 될 수도 있습니다.</p>
+                        <p style="margin-top: 1.5rem;">생각해보세요:</p>
+                        <ul>
+                            <li>시행착오 5개월 = 기회비용 수억 손실</li>
+                            <li>잘못된 방향 1년 = 회사 위기 도래 가능성 높아짐</li>
+                            <li>관점 해킹 능력 = 평생 사용</li>
+                        </ul>
+                        <p style="margin-top: 1.5rem;"><strong>5개월 투자로:</strong></p>
+                        <ul>
+                            <li>수억원 시행착오 비용 절감</li>
+                            <li>평생 쓸 프레임워크 획득</li>
+                            <li>유니콘 성장 로드맵 확보</li>
+                        </ul>
+                        <p style="margin-top: 1.5rem;">게다가 런칭 특가로 총 1,000만원 할인 중!<br>
+                           월 300만원, 5개월 총 1,500만원은 충분한 투자 가치가 있다고 생각하지 않으세요?</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q7. 환불 정책은 어떻게 되나요?</div>
+                    <div class="faq-answer">
+                        <p><strong>첫 세션에서 만족하지 못하시면 전액 환불합니다.</strong></p>
+                        <p style="margin-top: 1rem;">조건 없이. 이유 묻지 않고.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q8. 언제 시작할 수 있나요?</div>
+                    <div class="faq-answer">
+                        <p>최종 계약 체결 기준, <strong>1주일 이내 시작</strong> 가능합니다.</p>
+                        <p style="margin-top: 1rem;">단, 매월 10팀만 진행하므로<br>
+                           예약 대기가 있을 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-cta">
+                <h3>더 많은 질문이 있으신가요?</h3>
+                <a href="https://forms.gle/UjSUBDvHKCeAAYeZ7" class="btn" target="_blank">무료 상담 신청하기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 11: URGENCY -->
+    <section id="urgency">
+        <div class="container">
+            <h2>지금 시작해야 하는 이유</h2>
+            
+            <div class="urgency-content">
+                <div class="urgency-box">
+                    <h3>⏰ 시간은 당신 편이 아닙니다</h3>
+                    <p>정체기가 길어질수록:</p>
+                    <ul>
+                        <li>팀 사기 저하</li>
+                        <li>경쟁사 격차 확대</li>
+                        <li>시장 기회 상실</li>
+                        <li>회복 더욱 어려워짐</li>
+                    </ul>
+                    <p style="margin-top: 2rem; font-size: 1.3rem;">
+                        콘스탄티노플은 3중 성벽에 기댄 채, 정체되었습니다.<br>
+                        결국, 천 년 제국이 53일 만에 무너졌습니다.</p>
+                    <p style="margin-top: 1rem; font-size: 1.3rem; color: var(--gold);">
+                        당신은 무엇에 기대고 있습니까?</p>
+                </div>
+                
+                <div class="urgency-box">
+                    <h3>🎯 매월 10팀만 진행합니다</h3>
+                    <p><strong>왜 제한하나요?</strong></p>
+                    <ul>
+                        <li>1:1 맞춤 코칭 품질 보장</li>
+                        <li>대표/창업자 직접 코칭</li>
+                        <li>집중 케어, 집중 코디네이션, 집중 코칭</li>
+                        <li>최고 품질 유지</li>
+                    </ul>
+                    <p style="margin-top: 2rem; font-weight: 600; color: var(--gold);">
+                        예약 대기자가 되시면,<br>
+                        그만큼 변혁의 시간이 더 늦어질 뿐입니다.</p>
+                </div>
+                
+                <div class="special-offer">
+                    <h3>🎁 런칭 특가 (한정)</h3>
+                    <div class="price-comparison">
+                        <div class="price-item">
+                            <h4>정가</h4>
+                            <p class="price">2,500만원</p>
+                            <p>(월 500만원 × 5개월)</p>
+                        </div>
+                        <div class="price-item">
+                            <h4>런칭 특가</h4>
+                            <p class="price" style="color: #1e3a5f;">1,500만원</p>
+                            <p>(월 300만원 × 5개월)</p>
+                        </div>
+                    </div>
+                    
+                    <p style="font-size: 2rem; margin: 2rem 0; font-weight: bold;">
+                        할인: 1,000만원 (40% OFF)</p>
+                    
+                    <div class="benefits-list">
+                        <h4 style="margin-bottom: 1rem;">추가 혜택</h4>
+                        <ul>
+                            <li>🎁 5개월 후 Follow-up 1회 무료 (125만원 상당)</li>
+                            <li>🎁 동문 네트워크 평생 무료</li>
+                            <li>🎁 Advanced 프로그램 20% 할인권</li>
+                        </ul>
+                    </div>
+                    
+                    <p style="margin-top: 2rem; font-size: 1.3rem; font-weight: 600;">
+                        런칭 특가 종료: 첫 10팀 마감 시</p>
+                </div>
+                
+                <div class="payment-options">
+                    <h4>💰 분할 납부 가능</h4>
+                    <p style="margin-bottom: 1rem;">부담을 낮췄습니다:</p>
+                    
+                    <div class="payment-option">
+                        <strong>옵션 1: 일시불</strong>, 추가 5% 할인<br>
+                        → 1,500만원 → <span style="color: var(--gold); font-size: 1.3rem;">1,425만원</span>
+                    </div>
+                    
+                    <div class="payment-option">
+                        <strong>옵션 2: 2회 분납</strong><br>
+                        → 계약 시 800만원<br>
+                        → 3개월 후 700만원
+                    </div>
+                    
+                    <div class="payment-option">
+                        <strong>옵션 3: 매월 분납 (총 5회)</strong><br>
+                        → 계약 시일 기준 매월 300만원
+                    </div>
+                    
+                    <p style="margin-top: 1rem; font-size: 0.9rem;">* VAT는 별도입니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 12: FINAL CTA -->
+    <section id="final-cta">
+        <div class="container">
+            <h2>당신의 르네상스는 지금 시작됩니다</h2>
+            
+            <p style="text-align: center; font-size: 1.3rem; margin: 2rem 0; color: rgba(255,255,255,0.9);">
+                천 년 제국도 변화를 거부하면 무너집니다.<br>
+                하지만 변화를 선택하면 르네상스가 시작됩니다.</p>
+            
+            <p style="text-align: center; font-size: 1.4rem; margin: 3rem 0; font-weight: 600; color: var(--gold);">
+                당신 앞에 두 가지 길이 있습니다.</p>
+            
+            <div class="two-paths">
+                <div class="path path-wait">
+                    <div class="path-image">
+                        <img src="./images/wait_way.png" alt="기다리는 길" style="width: 100%; max-width: 400px; border-radius: 15px; margin-bottom: 2rem;">
+                    </div>
+                    <h3>❌ 기다리는 길</h3>
+                    <ul>
+                        <li>과거 방식 고수</li>
+                        <li>정체 지속</li>
+                        <li>경쟁 뒤처짐</li>
+                        <li>강제 변화 (위기)</li>
+                        <li>회복 불가능</li>
+                    </ul>
+                </div>
+                
+                <div class="path path-start">
+                    <div class="path-image">
+                        <img src="./images/start_success_way.png" alt="시작하는 길" style="width: 100%; max-width: 400px; border-radius: 15px; margin-bottom: 2rem;">
+                    </div>
+                    <h3>✅ 시작하는 길</h3>
+                    <ul>
+                        <li>스스로 변화 선택</li>
+                        <li>본질 재발견</li>
+                        <li>기회 포착</li>
+                        <li>실행과 검증</li>
+                        <li>유니콘 도약</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="final-message">
+                <h3>선택은 당신의 것입니다</h3>
+                
+                <div class="final-results">
+                    <p style="font-size: 1.3rem; margin-bottom: 1.5rem; font-weight: 600;">5개월 후:</p>
+                    
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>1️⃣ 비즈니스가 달라집니다</strong></p>
+                    <ul>
+                        <li>막혔던 문제가 해결됩니다</li>
+                        <li>유니콘 성장 로드맵이 확보됩니다</li>
+                        <li>새로운 시장 기회를 발견합니다</li>
+                        <li>검증된 성장 전략을 실행합니다</li>
+                    </ul>
+                    
+                    <p style="font-size: 1.2rem; margin: 2rem 0 1rem; font-weight: 600;"><strong>2️⃣ 당신도 달라집니다</strong></p>
+                    <ul>
+                        <li>스스로 관점을 전환하는 리더</li>
+                        <li>스스로 전략을 수립하는 CEO</li>
+                        <li>스스로 성장하는 Founder</li>
+                    </ul>
+                    
+                    <p style="font-size: 1.4rem; margin-top: 2rem; font-weight: 600; color: var(--gold);">
+                        <strong>문제 해결 + 유니콘 동력 + 평생 능력</strong></p>
+                    <p style="font-size: 1.2rem; margin-top: 1rem;">
+                        이 모든 것을 5개월 만에 얻습니다.</p>
+                </div>
+                
+                <p style="font-size: 1.5rem; margin: 3rem 0; font-weight: 600;">
+                    당신의 르네상스를 시작하세요.</p>
+            </div>
+            
+            <div class="final-cta-buttons">
+                <div class="final-cta-button">
+                    <h4>무료 상담 및 진단 신청하기</h4>
+                    <p>(60분, 부담 없이)</p>
+                    <a href="https://forms.gle/UjSUBDvHKCeAAYeZ7" class="btn" target="_blank">신청하기</a>
+                </div>
+                
+                <div class="final-cta-button">
+                    <h4>르네상스 어드벤처 신청하기</h4>
+                    <p>(런칭 특가 1,000만원 할인)</p>
+                    <a href="https://forms.gle/eJybW2Wc1z5L8MDZ8" class="btn" target="_blank">지금 신청하기</a>
+                </div>
+            </div>
+            
+            <div class="final-warnings">
+                <p>⚠️ 매월 10팀 한정</p>
+                <p>⏰ 런칭 특가 조만간 종료</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3><img src="./images/renaissance_icon.png" alt="" class="renaissance-icon size-medium" style="margin-right: 0.7rem;">Renaissance Adventure™</h3>
+                <p>관점 해킹과 EMP+DT로 당신의 르네상스(유니콘)를 만드는 여정</p>
+            </div>
+            
+            <div class="footer-social">
+                <h4>[SOCIAL]</h4>
+                <a href="https://www.linkedin.com/in/renaissance-adventure/" target="_blank">[LinkedIn]</a>
+                <a href="https://www.instagram.com/renaissance_adventure_/" target="_blank">[Instagram]</a>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Renaissance Adventure™</p>
+                <p>All rights reserved.</p>
+                <p style="margin-top: 1.5rem;">상호: 퍼스펙티브랩(Perspective Lab) | 대표: 신동해</p>
+                <p>사업자등록번호: 179-28-01804</p>
+                <p>사업장소재지: 서울특별시 강서구 금낭화로7길 17, 301호</p>
+                <p>개인정보보호책임자: 신동해</p>
+            </div>
+            
+            <a href="#hero" class="scroll-top">맨 위로 가기 ↑</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navigation background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(30, 58, 95, 1)';
+            } else {
+                nav.style.background = 'rgba(30, 58, 95, 0.98)';
+            }
+        });
+
+        // Story section scroll animation
+        const storySections = document.querySelectorAll('.story-section');
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const storyObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        storySections.forEach(section => {
+            storyObserver.observe(section);
+        });
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                // Close all other answers
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.classList.remove('active');
+                });
+                
+                // Toggle current answer
+                if (!isActive) {
+                    answer.classList.add('active');
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
