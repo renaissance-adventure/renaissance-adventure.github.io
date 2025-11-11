@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Sitemap: https://renaissance-adventure.github.io/sitemap.xml
+
+# 크롤링 허용
+User-agent: Googlebot
+Allow: /
+
+User-agent: Yeti
+Allow: /
