@@ -30,12 +30,12 @@
     <link rel="icon" type="image/png" href="./images/renaissance_icon.png">
     
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJL1YM9LTE"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-ZJL1YM9LTE');
+        gtag('config', 'G-XXXXXXXXXX');
     </script>
     
     <style>
@@ -351,10 +351,14 @@
         .story-image {
             text-align: center;
             margin: 3rem 0;
+            max-width: 100%;
+            overflow: hidden;
         }
         
         .story-image img {
             max-width: 100%;
+            width: 100%;
+            height: auto;
             border-radius: 15px;
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
         }
@@ -1832,6 +1836,17 @@
                 grid-template-columns: 1fr;
             }
             
+            .story-image {
+                margin: 2rem 0;
+                padding: 0 1rem;
+            }
+            
+            .story-image img {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+            }
+            
             .comparison-table thead th,
             .program-comparison-table thead th {
                 font-size: 1.1rem;
@@ -1963,7 +1978,7 @@
                        그리고 그곳에서 천년간 잠들어 있던 지혜를 풀어놓았습니다.</p>
                     <p>갑자기 서유럽이 깨어났습니다.</p>
                     <div class="story-image" style="margin: 2rem 0;">
-                        <img src="./images/renaissance_simbol.png" alt="르네상스" style="max-width: 400px;">
+                        <img src="./images/renaissance_simbol.png" alt="르네상스" style="max-width: 100%; width: 100%; height: auto;">
                     </div>
                     <p class="highlight">이것이 르네상스였습니다.</p>
                     <p>파괴가 창조가 되었습니다.<br>
@@ -1979,7 +1994,7 @@
                        익숙해진 시장과 고객들.</p>
                     <p>하지만, 세상은 계속 진화하고 변화합니다.</p>
                     <div class="story-image" style="margin: 2rem 0;">
-                        <img src="./images/choice.png" alt="선택의 갈림길" style="max-width: 600px;">
+                        <img src="./images/choice.png" alt="선택의 갈림길" style="max-width: 100%; width: 100%; height: auto;">
                     </div>
                     <p>만약 콘스탄티노플이 스스로 변화했다면?<br>
                        바실리카가 오기 전에 혁신했다면?</p>
