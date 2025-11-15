@@ -88,8 +88,15 @@
         }
         
         nav .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             font-size: 1.5rem;
             font-weight: bold;
+            white-space: nowrap;
+        }
+        
+        nav .logo span {
             background: linear-gradient(135deg, var(--gold), #FFD700);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -1785,6 +1792,15 @@
         
         /* Responsive */
         @media (max-width: 768px) {
+            nav .logo {
+                font-size: 1.1rem;
+            }
+            
+            nav .logo .renaissance-icon {
+                width: 25px;
+                height: 25px;
+            }
+            
             nav ul {
                 display: none;
             }
@@ -1865,7 +1881,10 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo"><img src="./images/renaissance_icon.png" alt="" class="renaissance-icon size-small" style="margin-right: 0.5rem; vertical-align: middle;">Renaissance Adventure™</div>
+            <div class="logo">
+                <img src="./images/renaissance_icon.png" alt="Renaissance Adventure Icon" class="renaissance-icon size-small">
+                <span>Renaissance Adventure™</span>
+            </div>
             <ul>
                 <li><a href="#hero">홈</a></li>
                 <li><a href="#story">스토리</a></li>
